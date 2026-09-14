@@ -153,3 +153,129 @@ El ciclo propuesto sigue cuatro actividades: declarar el problema, formular supu
 | Conductores urbanos | Conocer opciones cercanas; revisar disponibilidad, precio y distancia. | Dos entrevistas registradas; falta una entrevista adicional. |
 | Propietarios de estacionamientos | Publicar espacios; configurar horarios y precio; controlar reservas. | Dos entrevistas registradas; falta una entrevista adicional. |
 
+
+# Capítulo II — Investigación y análisis
+
+## 2.1 Competidores y análisis competitivo
+
+La comparación siguiente es un marco de posicionamiento basado en la información documentada para TB1. No se presenta como estudio de mercado actualizado ni como verificación de funcionalidades vigentes de terceros.
+
+| Alternativa considerada | Enfoque descrito en el análisis | Oportunidad para ParkLink | Límite |
+|---|---|---|---|
+| Apparka | Pago y gestión de estacionamiento. | Integrar descubrimiento, reserva y comunicación en un recorrido coherente. | Requiere verificación competitiva independiente antes de una decisión comercial. |
+| Parkopedia | Consulta de ubicaciones de estacionamiento. | Diferenciar el detalle de disponibilidad y la reserva propuesta. | No se afirma cobertura ni funciones vigentes. |
+| Quadra | Gestión operativa de estacionamientos. | Considerar una experiencia orientada a propietarios de espacios pequeños. | No se afirma mercado objetivo ni alcance actual. |
+| ParkLink | Búsqueda, publicación, reserva, pago y notificación propuestos. | Conectar los dos segmentos en un modelo trazable. | La propuesta requiere validación con usuarios y viabilidad de negocio. |
+
+### Estrategias de trabajo
+
+| Estrategia | Hipótesis de diferenciación | Evidencia requerida |
+|---|---|---|
+| Disponibilidad y reserva | Separar la consulta de disponibilidad de la confirmación transaccional de una reserva. | Pruebas de flujo, reglas de concurrencia y validación con usuarios. |
+| Oferta de propietarios | Permitir configurar espacios, horarios, precios y estado. | Pruebas de tarea con propietarios. |
+| Información para decidir | Mostrar detalle, precio, horario y distancia cuando el dato esté disponible. | Evaluación de comprensión y origen verificable de datos. |
+| Confianza | Trazar confirmaciones, cancelaciones, pagos y notificaciones. | Diseño de auditoría, seguridad e integración de pagos. |
+
+## 2.2 Entrevistas
+
+### Diseño de entrevistas
+
+Las entrevistas semiestructuradas buscan conocer prácticas, dificultades y expectativas de los dos segmentos. La guía indaga por contexto de uso, proceso actual, problemas, información necesaria y reacción ante una plataforma. No se utiliza para estimar prevalencia estadística.
+
+| Segmento | Preguntas de exploración |
+|---|---|
+| Conductores urbanos | ¿Cómo busca estacionamiento? ¿Qué información necesita antes de llegar? ¿Qué ocurre si no encuentra espacio? ¿Qué esperaría de una reserva? |
+| Propietarios | ¿Cómo administra los espacios? ¿Qué dificulta su gestión? ¿Cómo define horario y precio? ¿Qué control espera de una plataforma? |
+
+### Registro de entrevistas — conductores
+
+| Entrevistado | Edad | Evidencia registrada | Hallazgos descritos |
+|---|---:|---|---|
+| Humberto Garcia Calla | 50 | Resumen de entrevista; material audiovisual no se publica por privacidad. | Reportó incertidumbre al llegar a un destino y búsquedas de hasta 20 minutos. Indicó interés en ver espacios libres cerca del destino, con precio y distancia en el mapa. |
+| Juan Pablo Yataca Juarez | 25 | Resumen de entrevista; material audiovisual no se publica por privacidad. | Indicó que usa vehículo principalmente los fines de semana, ha cancelado planes por no encontrar estacionamiento y valoró reservar antes de salir y extender una reserva. |
+| TODO — entrevista adicional de conductor | — | Pendiente. | Se requiere para alcanzar el mínimo de tres entrevistas del segmento. |
+
+**Estadística descriptiva transparente:** edades conocidas `n=2`; suma `50 + 25 = 75`; promedio `75 / 2 = 37.5 años`. Este promedio no representa a la población de conductores ni permite inferir porcentajes.
+
+### Registro de entrevistas — propietarios
+
+| Entrevistado | Edad | Evidencia registrada | Hallazgos descritos |
+|---|---:|---|---|
+| Jarol Saquiray Vargas | 24 | Resumen de entrevista; material audiovisual no se publica por privacidad. | Indicó que administra tres espacios de manera informal con conocidos y por WhatsApp. Señaló interés en publicar espacios y configurar horario y precio. |
+| Dlan Garcia Levano | 23 | Resumen de entrevista; material audiovisual no se publica por privacidad. | Describió espacios de un edificio residencial sin gestión sistematizada y necesidad de habilitarlos o deshabilitarlos según horario, sin eliminarlos. |
+| TODO — entrevista adicional de propietario | — | Pendiente. | Se requiere para alcanzar el mínimo de tres entrevistas del segmento. |
+
+**Estadística descriptiva transparente:** edades conocidas `n=2`; suma `24 + 23 = 47`; promedio `47 / 2 = 23.5 años`. Este promedio no representa a la población de propietarios ni permite inferir porcentajes.
+
+### Análisis de entrevistas y límites
+
+| Tema | Indicio en la muestra | Implicancia de requisito | Límite |
+|---|---|---|---|
+| Búsqueda | Los dos resúmenes de conductores priorizan información antes de desplazarse. | US01–US04: búsqueda, disponibilidad, filtros y detalle. | Dos registros cualitativos; falta una entrevista. |
+| Reserva | Un conductor menciona reservar y extender. | US05, US08 y reglas de disponibilidad. | No valida adopción ni frecuencia. |
+| Gestión de oferta | Ambos propietarios describen una necesidad de control de espacios. | US09–US13: publicación, configuración, estado, reservas e ingresos. | Dos registros cualitativos; falta una entrevista. |
+| Confianza operativa | Los flujos requieren confirmación y trazabilidad. | US14–US16, US20 y TS01/TS04/TS06. | Debe validarse con prototipos y pruebas técnicas. |
+
+## 2.3 Needfinding
+
+### Hallazgos priorizados
+
+| Necesidad | Persona afectada | Oportunidad | Requisito relacionado |
+|---|---|---|---|
+| Evaluar opciones antes de llegar | Conductor | Presentar información de búsqueda y detalle de forma comprensible. | US01–US04 |
+| Asegurar un intervalo de uso | Conductor | Solicitar reserva con confirmación y manejo de cancelación/extensión. | US05–US08 |
+| Publicar y controlar oferta | Propietario | Registrar espacio, horarios, precio y estado. | US09–US12 |
+| Conocer el resultado de operaciones | Ambos segmentos | Notificar confirmaciones y conservar comprobantes/historial. | US07, US13, US16, US20 |
+
+### User Personas
+
+Los perfiles son arquetipos de diseño construidos a partir de los patrones descritos. No representan personas reales completas ni atribuyen datos no declarados.
+
+![Personas basadas en la muestra](docs/tb1/assets/user-personas.svg)
+
+| Arquetipo | Objetivo | Frustración | Necesidad prioritaria |
+|---|---|---|---|
+| Conductor que planifica su llegada | Elegir un espacio antes de desplazarse. | Incertidumbre de encontrar lugar al llegar. | Comparar disponibilidad, precio y distancia; solicitar reserva. |
+| Propietario que administra oferta | Controlar cuándo y cómo ofrece sus espacios. | Coordinación manual y escasa visibilidad. | Configurar horario, precio, estado y revisar reservas. |
+
+### User Task Matrix
+
+| Tarea | Conductor | Propietario | Riesgo que debe resolverse |
+|---|---|---|---|
+| Buscar una opción | Inicia por destino y revisa resultados. | No aplica. | La disponibilidad mostrada no equivale a una reserva. |
+| Evaluar detalle | Revisa precio, horario, distancia y condiciones disponibles. | Mantiene información de su espacio. | Información incompleta o desactualizada. |
+| Reservar | Define intervalo y confirma la solicitud. | Recibe el efecto de una reserva confirmada. | Conflicto de reserva concurrente. |
+| Configurar oferta | No aplica. | Publica, fija horario/precio y cambia estado. | Efecto de cambios sobre reservas existentes. |
+| Consultar resultado | Revisa historial, comprobante o aviso. | Revisa reservas e ingresos. | Trazabilidad y autorización. |
+
+### Empathy Maps
+
+![Empathy Maps de los arquetipos](docs/tb1/assets/empathy-maps.svg)
+
+| Arquetipo | Piensa y siente | Ve y hace | Dolor | Ganancia esperada |
+|---|---|---|---|---|
+| Conductor | Necesita reducir incertidumbre antes del trayecto. | Busca opciones y compara información. | Tiempo y estrés asociados a la búsqueda. | Llegar con una opción evaluada y una confirmación trazable. |
+| Propietario | Quiere mantener control sobre su oferta. | Coordina o administra espacios disponibles. | Gestión dispersa y poca visibilidad. | Actualizar reglas de oferta y conocer reservas. |
+
+### As-Is Scenario Maps
+
+![Escenarios actuales](docs/tb1/assets/as-is-scenarios.svg)
+
+| Escenario | Inicio | Dificultad | Resultado actual |
+|---|---|---|---|
+| Conductor | Se aproxima a un destino. | No cuenta con certeza de espacio disponible. | Busca opciones manualmente; puede perder tiempo o cambiar el plan. |
+| Propietario | Tiene un espacio potencialmente disponible. | Coordina disponibilidad y condiciones por canales manuales. | Menor control y visibilidad de la oferta. |
+
+### Ubiquitous Language
+
+| Término | Definición acordada para TB1 | No significa |
+|---|---|---|
+| Espacio | Unidad de estacionamiento que un propietario puede publicar. | Una reserva confirmada. |
+| Disponibilidad | Estado consultable para un intervalo; puede cambiar. | Garantía definitiva de uso. |
+| Reserva | Compromiso creado tras validar reglas del dominio. | Una simple búsqueda. |
+| Intervalo | Fecha/hora de inicio y fin solicitada para una reserva. | Horario genérico del propietario. |
+| Confirmación | Estado trazable de una operación aceptada. | Notificación sin operación registrada. |
+| Pago | Operación gestionada por el contexto de pagos. | Acceso directo a datos bancarios. |
+| Idempotencia | Repetir una solicitud no duplica su efecto de negocio. | Reintentar sin control. |
+| Evento de dominio | Hecho de negocio publicado después de un cambio válido. | Comando o petición HTTP. |
+
