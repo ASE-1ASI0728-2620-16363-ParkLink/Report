@@ -384,7 +384,21 @@ El alcance solicita considerar una landing page. No existe evidencia suficiente 
 
 > La arquitectura de este capítulo es un diseño objetivo para TB1. No afirma que los servicios, colas, integraciones o despliegues estén implementados.
 
-## 4.1 Architectural drivers
+## 4.1 Design Purpose
+
+El propósito de diseño es sostener una experiencia en la que el conductor consulte una oferta y solicite una reserva sin confundir ambas acciones, mientras el propietario controla la publicación de su espacio. La arquitectura debe proteger las reglas de reserva, autorización y pago, y mantener trazabilidad de los efectos asíncronos.
+
+## 4.2 Primary Functionality
+
+| Capacidad primaria | Historias relacionadas | Contexto responsable |
+|---|---|---|
+| Identidad y acceso | US17–US19 | IAM |
+| Publicar y consultar oferta | US01–US04, US09–US13 | Parking |
+| Solicitar y gestionar reserva | US05–US08 | Reservation |
+| Procesar pago y comprobante | US14–US16 | Payment |
+| Informar confirmaciones | US20 | Notification |
+
+## 4.3 Architectural drivers
 
 | ID | Driver | Consecuencia de diseño |
 |---|---|---|
@@ -395,7 +409,7 @@ El alcance solicita considerar una landing page. No existe evidencia suficiente 
 | AD05 | Los efectos secundarios deben desacoplarse del comando principal. | RabbitMQ transporta eventos de dominio con trazabilidad. |
 | AD06 | La interacción en lenguaje natural no debe ampliar privilegios. | AI Agent usa herramientas controladas y jamás accede directamente a PostgreSQL. |
 
-## 4.2 Atributos de calidad y restricciones
+## 4.4 Atributos de calidad y restricciones
 
 ### Quality Attribute Scenarios
 
@@ -421,7 +435,7 @@ El alcance solicita considerar una landing page. No existe evidencia suficiente 
 | C07 | El AI Agent no accede a bases de datos ni ejecuta acciones de escritura sin una interfaz controlada. | Solo usa las herramientas de lectura/consulta autorizadas. |
 | C08 | La landing page requiere definición adicional. | No se incorpora como implementación ni como evidencia de producto. |
 
-## 4.3 Architectural Decision Records
+## 4.5 Architectural Decisions y ADRs
 
 | ADR | Decisión | Estado | Motivo y tradeoff |
 |---|---|---|---|
@@ -432,7 +446,7 @@ El alcance solicita considerar una landing page. No existe evidencia suficiente 
 | ADR-005 | Modelar Reservation como core domain. | Propuesto | Protege la propuesta de valor; concentra las reglas de intervalo, estado y concurrencia. |
 | ADR-006 | Incorporar AI Agent con herramientas controladas. | Propuesto | Mejora la consulta en lenguaje natural; limita el agente a contratos explícitos y resultados autorizados. |
 
-## 4.4 Domain-Driven Design
+## 4.6 Domain-Driven Design
 
 ### Subdominios y bounded contexts
 
@@ -489,7 +503,7 @@ La exploración separa conceptos que cambian por razones distintas: **identidad*
 | Eventos → Notification | Published Language en RabbitMQ. | Llamadas síncronas en cascada. | El aviso no bloquea la transacción principal. |
 | AI Agent → Parking/Reservation | Anti-Corruption Layer mediante herramientas. | Acceso SQL del agente. | Mantiene validación, autorización y límites de datos. |
 
-## 4.5 Flujos de mensajes de dominio
+## 4.7 Flujos de mensajes de dominio
 
 ![Domain Message Flows](docs/tb1/assets/domain-message-flows.svg)
 
@@ -517,7 +531,7 @@ La exploración separa conceptos que cambian por razones distintas: **identidad*
 5. Reservation Service consume el evento, confirma o rechaza la transición conforme a su regla y publica el evento correspondiente.
 6. Parking Service actualiza una proyección; Notification Service intenta entregar un aviso. Sus fallos no modifican la decisión ya confirmada.
 
-## 4.6 C4 Model
+## 4.8 C4 Model
 
 ### Context
 
@@ -541,7 +555,7 @@ El despliegue propuesto separa borde público, servicios privados, RabbitMQ y Po
 
 ![Secuencia de reserva](docs/tb1/assets/reservation-sequence.svg)
 
-## 4.7 Seguridad y AI Agent
+## 4.9 Seguridad y AI Agent
 
 El AI Agent interpreta intención de estacionamiento en lenguaje natural, por ejemplo destino, ventana de tiempo o preferencias. Su capacidad queda limitada a las siguientes herramientas: `searchParking()`, `getParkingDetails()`, `checkAvailability()`, `calculateDistance()` y `getReservationOptions()`.
 
