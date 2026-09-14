@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="626" viewBox="0 0 1440 626" role="img" aria-labelledby="t d">
+<title id="t">Impact Map — ParkLink</title>
+<desc id="d">Vinculación entre cambios de comportamiento y entregables propuestos</desc>
+<rect width="100%" height="100%" fill="#f8fafc"/>
+<rect x="0" y="0" width="1440" height="126" fill="#123047"/>
+<text x="46" y="54" fill="#ffffff" font-family="Arial, sans-serif" font-size="31" font-weight="700">Impact Map — ParkLink</text>
+<text x="46" y="91" fill="#d7e7f1" font-family="Arial, sans-serif" font-size="17">Vinculación entre cambios de comportamiento y entregables propuestos</text>
+<rect x="46.0" y="158" width="437.3333333333333" height="366" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+<rect x="46.0" y="158" width="437.3333333333333" height="50" rx="12" fill="#0f766e"/>
+<text x="64.0" y="190" fill="#ffffff" font-family="Arial, sans-serif" font-size="20" font-weight="700">Objetivo</text>
+<rect x="60.0" y="232" width="409.3333333333333" height="64" rx="8" fill="#f1f5f9"/>
+<text x="72.0" y="254" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">Conductores</text>
+<text x="72.0" y="274" fill="#334155" font-family="Arial, sans-serif" font-size="14">Reducir incertidumbre antes del</text>
+<text x="72.0" y="292" fill="#334155" font-family="Arial, sans-serif" font-size="14">trayecto.</text>
+<rect x="60.0" y="308" width="409.3333333333333" height="52" rx="8" fill="#f1f5f9"/>
+<text x="72.0" y="330" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">Propietarios</text>
+<text x="72.0" y="350" fill="#334155" font-family="Arial, sans-serif" font-size="14">Dar control explícito sobre la oferta.</text>
+<rect x="60.0" y="372" width="409.3333333333333" height="52" rx="8" fill="#f1f5f9"/>
+<text x="72.0" y="394" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">Operación</text>
+<text x="72.0" y="414" fill="#334155" font-family="Arial, sans-serif" font-size="14">Mantener resultados trazables.</text>
+<rect x="501.3333333333333" y="158" width="437.3333333333333" height="366" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+<rect x="501.3333333333333" y="158" width="437.3333333333333" height="50" rx="12" fill="#2563eb"/>
+<text x="519.3333333333333" y="190" fill="#ffffff" font-family="Arial, sans-serif" font-size="20" font-weight="700">Actor y cambio</text>
+<rect x="515.3333333333333" y="232" width="409.3333333333333" height="52" rx="8" fill="#f1f5f9"/>
+<text x="527.3333333333333" y="254" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">Conductor</text>
+<text x="527.3333333333333" y="274" fill="#334155" font-family="Arial, sans-serif" font-size="14">Evalúa una opción antes de desplazarse.</text>
+<rect x="515.3333333333333" y="296" width="409.3333333333333" height="52" rx="8" fill="#f1f5f9"/>
+<text x="527.3333333333333" y="318" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">Propietario</text>
+<text x="527.3333333333333" y="338" fill="#334155" font-family="Arial, sans-serif" font-size="14">Configura y administra su espacio.</text>
+<rect x="515.3333333333333" y="360" width="409.3333333333333" height="52" rx="8" fill="#f1f5f9"/>
+<text x="527.3333333333333" y="382" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">Ambos</text>
+<text x="527.3333333333333" y="402" fill="#334155" font-family="Arial, sans-serif" font-size="14">Reconocen resultados de operaciones.</text>
+<rect x="956.6666666666666" y="158" width="437.3333333333333" height="366" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+<rect x="956.6666666666666" y="158" width="437.3333333333333" height="50" rx="12" fill="#7c3aed"/>
+<text x="974.6666666666666" y="190" fill="#ffffff" font-family="Arial, sans-serif" font-size="20" font-weight="700">Entregables</text>
+<rect x="970.6666666666666" y="232" width="409.3333333333333" height="52" rx="8" fill="#f1f5f9"/>
+<text x="982.6666666666666" y="254" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">Descubrimiento</text>
+<text x="982.6666666666666" y="274" fill="#334155" font-family="Arial, sans-serif" font-size="14">US01–US05 y TS01–TS03.</text>
+<rect x="970.6666666666666" y="296" width="409.3333333333333" height="52" rx="8" fill="#f1f5f9"/>
+<text x="982.6666666666666" y="318" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">Oferta</text>
+<text x="982.6666666666666" y="338" fill="#334155" font-family="Arial, sans-serif" font-size="14">US09–US13 y TS04–TS06.</text>
+<rect x="970.6666666666666" y="360" width="409.3333333333333" height="52" rx="8" fill="#f1f5f9"/>
+<text x="982.6666666666666" y="382" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">Confianza</text>
+<text x="982.6666666666666" y="402" fill="#334155" font-family="Arial, sans-serif" font-size="14">Pagos, eventos y notificaciones.</text>
+<text x="46" y="600" fill="#475569" font-family="Arial, sans-serif" font-size="14">Diseño objetivo TB1 — evidencia y decisiones por validar</text>
+</svg>

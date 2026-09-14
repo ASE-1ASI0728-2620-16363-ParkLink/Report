@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="514" viewBox="0 0 1440 514" role="img" aria-labelledby="t d">
+<title id="t">Context Map — ParkLink</title>
+<desc id="d">Relaciones entre bounded contexts y patrones de integración</desc>
+<rect width="100%" height="100%" fill="#f8fafc"/>
+<rect x="0" y="0" width="1440" height="126" fill="#123047"/>
+<text x="46" y="54" fill="#ffffff" font-family="Arial, sans-serif" font-size="31" font-weight="700">Context Map — ParkLink</text>
+<text x="46" y="91" fill="#d7e7f1" font-family="Arial, sans-serif" font-size="17">Relaciones entre bounded contexts y patrones de integración</text>
+<rect x="46.0" y="158" width="323.5" height="254" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+<rect x="46.0" y="158" width="323.5" height="50" rx="12" fill="#0f766e"/>
+<text x="64.0" y="190" fill="#ffffff" font-family="Arial, sans-serif" font-size="20" font-weight="700">IAM</text>
+<rect x="60.0" y="232" width="295.5" height="52" rx="8" fill="#f1f5f9"/>
+<text x="72.0" y="254" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">Published Language</text>
+<text x="72.0" y="274" fill="#334155" font-family="Arial, sans-serif" font-size="14">Claims de identidad y rol.</text>
+<rect x="60.0" y="296" width="295.5" height="52" rx="8" fill="#f1f5f9"/>
+<text x="72.0" y="318" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">Clientes</text>
+<text x="72.0" y="338" fill="#334155" font-family="Arial, sans-serif" font-size="14">Gateway y servicios de dominio.</text>
+<rect x="387.5" y="158" width="323.5" height="254" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+<rect x="387.5" y="158" width="323.5" height="50" rx="12" fill="#2563eb"/>
+<text x="405.5" y="190" fill="#ffffff" font-family="Arial, sans-serif" font-size="20" font-weight="700">Parking y Reservation</text>
+<rect x="401.5" y="232" width="295.5" height="52" rx="8" fill="#f1f5f9"/>
+<text x="413.5" y="254" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">Customer/Supplier</text>
+<text x="413.5" y="274" fill="#334155" font-family="Arial, sans-serif" font-size="14">Consulta de oferta y eventos.</text>
+<rect x="401.5" y="296" width="295.5" height="52" rx="8" fill="#f1f5f9"/>
+<text x="413.5" y="318" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">Límite</text>
+<text x="413.5" y="338" fill="#334155" font-family="Arial, sans-serif" font-size="14">No comparten tablas PostgreSQL.</text>
+<rect x="729.0" y="158" width="323.5" height="254" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+<rect x="729.0" y="158" width="323.5" height="50" rx="12" fill="#7c3aed"/>
+<text x="747.0" y="190" fill="#ffffff" font-family="Arial, sans-serif" font-size="20" font-weight="700">Reservation y Payment</text>
+<rect x="743.0" y="232" width="295.5" height="52" rx="8" fill="#f1f5f9"/>
+<text x="755.0" y="254" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">Customer/Supplier</text>
+<text x="755.0" y="274" fill="#334155" font-family="Arial, sans-serif" font-size="14">Comando de pago y evento de resultado.</text>
+<rect x="743.0" y="296" width="295.5" height="52" rx="8" fill="#f1f5f9"/>
+<text x="755.0" y="318" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">Alternativa descartada</text>
+<text x="755.0" y="338" fill="#334155" font-family="Arial, sans-serif" font-size="14">Sin transacción distribuida global.</text>
+<rect x="1070.5" y="158" width="323.5" height="254" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+<rect x="1070.5" y="158" width="323.5" height="50" rx="12" fill="#b45309"/>
+<text x="1088.5" y="190" fill="#ffffff" font-family="Arial, sans-serif" font-size="20" font-weight="700">Notification y AI</text>
+<rect x="1084.5" y="232" width="295.5" height="64" rx="8" fill="#f1f5f9"/>
+<text x="1096.5" y="254" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">Published Language</text>
+<text x="1096.5" y="274" fill="#334155" font-family="Arial, sans-serif" font-size="14">Eventos de dominio; herramientas con</text>
+<text x="1096.5" y="292" fill="#334155" font-family="Arial, sans-serif" font-size="14">ACL.</text>
+<rect x="1084.5" y="308" width="295.5" height="64" rx="8" fill="#f1f5f9"/>
+<text x="1096.5" y="330" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">Límite</text>
+<text x="1096.5" y="350" fill="#334155" font-family="Arial, sans-serif" font-size="14">Sin SQL directo ni privilegios</text>
+<text x="1096.5" y="368" fill="#334155" font-family="Arial, sans-serif" font-size="14">implícitos.</text>
+<text x="46" y="488" fill="#475569" font-family="Arial, sans-serif" font-size="14">Diseño objetivo TB1 — evidencia y decisiones por validar</text>
+</svg>

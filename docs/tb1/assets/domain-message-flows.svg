@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="626" viewBox="0 0 1440 626" role="img" aria-labelledby="t d">
+<title id="t">Domain Message Flows — RabbitMQ</title>
+<desc id="d">Eventos de dominio publicados por outbox y consumidos de forma idempotente</desc>
+<rect width="100%" height="100%" fill="#f8fafc"/>
+<rect x="0" y="0" width="1440" height="126" fill="#123047"/>
+<text x="46" y="54" fill="#ffffff" font-family="Arial, sans-serif" font-size="31" font-weight="700">Domain Message Flows — RabbitMQ</text>
+<text x="46" y="91" fill="#d7e7f1" font-family="Arial, sans-serif" font-size="17">Eventos de dominio publicados por outbox y consumidos de forma idempotente</text>
+<rect x="46.0" y="158" width="323.5" height="366" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+<rect x="46.0" y="158" width="323.5" height="50" rx="12" fill="#0f766e"/>
+<text x="64.0" y="190" fill="#ffffff" font-family="Arial, sans-serif" font-size="20" font-weight="700">Productores</text>
+<rect x="60.0" y="232" width="295.5" height="52" rx="8" fill="#f1f5f9"/>
+<text x="72.0" y="254" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">Parking</text>
+<text x="72.0" y="274" fill="#334155" font-family="Arial, sans-serif" font-size="14">parking.space.updated</text>
+<rect x="60.0" y="296" width="295.5" height="52" rx="8" fill="#f1f5f9"/>
+<text x="72.0" y="318" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">Reservation</text>
+<text x="72.0" y="338" fill="#334155" font-family="Arial, sans-serif" font-size="14">reservation.confirmed / cancelled</text>
+<rect x="60.0" y="360" width="295.5" height="52" rx="8" fill="#f1f5f9"/>
+<text x="72.0" y="382" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">Payment</text>
+<text x="72.0" y="402" fill="#334155" font-family="Arial, sans-serif" font-size="14">payment.approved / refunded</text>
+<rect x="387.5" y="158" width="323.5" height="366" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+<rect x="387.5" y="158" width="323.5" height="50" rx="12" fill="#2563eb"/>
+<text x="405.5" y="190" fill="#ffffff" font-family="Arial, sans-serif" font-size="20" font-weight="700">Exchange</text>
+<rect x="401.5" y="232" width="295.5" height="52" rx="8" fill="#f1f5f9"/>
+<text x="413.5" y="254" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">Topic</text>
+<text x="413.5" y="274" fill="#334155" font-family="Arial, sans-serif" font-size="14">parklink.domain.v1</text>
+<rect x="401.5" y="296" width="295.5" height="52" rx="8" fill="#f1f5f9"/>
+<text x="413.5" y="318" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">Routing keys</text>
+<text x="413.5" y="338" fill="#334155" font-family="Arial, sans-serif" font-size="14">Eventos versionados por dominio.</text>
+<rect x="401.5" y="360" width="295.5" height="52" rx="8" fill="#f1f5f9"/>
+<text x="413.5" y="382" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">Correlación</text>
+<text x="413.5" y="402" fill="#334155" font-family="Arial, sans-serif" font-size="14">correlationId y eventId.</text>
+<rect x="729.0" y="158" width="323.5" height="366" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+<rect x="729.0" y="158" width="323.5" height="50" rx="12" fill="#7c3aed"/>
+<text x="747.0" y="190" fill="#ffffff" font-family="Arial, sans-serif" font-size="20" font-weight="700">Consumidores</text>
+<rect x="743.0" y="232" width="295.5" height="52" rx="8" fill="#f1f5f9"/>
+<text x="755.0" y="254" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">Parking</text>
+<text x="755.0" y="274" fill="#334155" font-family="Arial, sans-serif" font-size="14">Actualiza proyección.</text>
+<rect x="743.0" y="296" width="295.5" height="52" rx="8" fill="#f1f5f9"/>
+<text x="755.0" y="318" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">Notification</text>
+<text x="755.0" y="338" fill="#334155" font-family="Arial, sans-serif" font-size="14">Entrega avisos.</text>
+<rect x="743.0" y="360" width="295.5" height="52" rx="8" fill="#f1f5f9"/>
+<text x="755.0" y="382" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">Reservation</text>
+<text x="755.0" y="402" fill="#334155" font-family="Arial, sans-serif" font-size="14">Reacciona a pago.</text>
+<rect x="1070.5" y="158" width="323.5" height="366" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+<rect x="1070.5" y="158" width="323.5" height="50" rx="12" fill="#b45309"/>
+<text x="1088.5" y="190" fill="#ffffff" font-family="Arial, sans-serif" font-size="20" font-weight="700">Fallo controlado</text>
+<rect x="1084.5" y="232" width="295.5" height="52" rx="8" fill="#f1f5f9"/>
+<text x="1096.5" y="254" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">ACK</text>
+<text x="1096.5" y="274" fill="#334155" font-family="Arial, sans-serif" font-size="14">Solo tras efecto local persistido.</text>
+<rect x="1084.5" y="296" width="295.5" height="52" rx="8" fill="#f1f5f9"/>
+<text x="1096.5" y="318" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">Reintento</text>
+<text x="1096.5" y="338" fill="#334155" font-family="Arial, sans-serif" font-size="14">Transitorio con contador y demora.</text>
+<rect x="1084.5" y="360" width="295.5" height="52" rx="8" fill="#f1f5f9"/>
+<text x="1096.5" y="382" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">DLQ</text>
+<text x="1096.5" y="402" fill="#334155" font-family="Arial, sans-serif" font-size="14">Mensaje agotado para revisión.</text>
+<text x="46" y="600" fill="#475569" font-family="Arial, sans-serif" font-size="14">Diseño objetivo TB1 — evidencia y decisiones por validar</text>
+</svg>
