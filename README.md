@@ -379,3 +379,207 @@ El alcance solicita considerar una landing page. No existe evidencia suficiente 
 | 10 | TS-AI01, TS-AI02, TS-AI03, TS-OBS01 | Should | TS-GW01, TS-SEC01, TS-MSG03 |
 | 11 | Landing page | Pendiente | Brecha de evidencia documentada; no planificar sin definición validada. |
 
+
+# Capítulo IV — Diseño de arquitectura
+
+> La arquitectura de este capítulo es un diseño objetivo para TB1. No afirma que los servicios, colas, integraciones o despliegues estén implementados.
+
+## 4.1 Architectural drivers
+
+| ID | Driver | Consecuencia de diseño |
+|---|---|---|
+| AD01 | Una reserva no debe duplicarse para el mismo espacio e intervalo. | Reservation Service mantiene invariantes y persistencia transaccional. |
+| AD02 | La búsqueda debe responder sin convertir una consulta en promesa de disponibilidad. | Parking Service expone consulta; Reservation Service confirma bajo reglas de negocio. |
+| AD03 | Pagos y notificaciones no deben duplicar efectos ante reintentos. | Idempotencia, outbox, consumidores idempotentes y auditoría. |
+| AD04 | Conductores y propietarios requieren permisos diferenciados. | IAM emite identidad; Gateway y servicios aplican autorización. |
+| AD05 | Los efectos secundarios deben desacoplarse del comando principal. | RabbitMQ transporta eventos de dominio con trazabilidad. |
+| AD06 | La interacción en lenguaje natural no debe ampliar privilegios. | AI Agent usa herramientas controladas y jamás accede directamente a PostgreSQL. |
+
+## 4.2 Atributos de calidad y restricciones
+
+### Quality Attribute Scenarios
+
+| ID | Atributo | Estímulo | Respuesta diseñada | Medida o criterio por validar |
+|---|---|---|---|---|
+| QAS01 | Rendimiento | Un conductor consulta opciones por destino. | Parking Service consulta su modelo de lectura y responde por REST/HTTPS. | Definir presupuesto de latencia mediante prueba de carga. |
+| QAS02 | Consistencia | Llegan solicitudes de reserva incompatibles. | Reservation Service serializa o bloquea el recurso conforme a su regla y confirma a lo sumo una. | Cero dobles reservas en pruebas de concurrencia definidas. |
+| QAS03 | Disponibilidad | Notification Service falla durante una confirmación. | La reserva queda confirmada si su transacción es válida; el evento se conserva para reintento. | Definir objetivo de recuperación y ventanas operativas. |
+| QAS04 | Seguridad | Un usuario intenta una operación fuera de su rol o recurso. | Gateway y servicio verifican token, rol y propiedad del recurso; se registra el rechazo. | Definir controles y prueba de autorización. |
+| QAS05 | Modificabilidad | Se agrega un nuevo canal de notificación. | Notification Service añade un adaptador sin modificar Reservation Service. | Revisión de contrato de evento y prueba de integración. |
+| QAS06 | Observabilidad | Un incidente atraviesa varios servicios. | Logs y mensajes comparten `correlationId`; la traza permite seguir el flujo. | Definir retención, campos y paneles operativos. |
+
+### Constraints
+
+| ID | Restricción | Implicancia |
+|---|---|---|
+| C01 | Los roles iniciales son conductor y propietario. | IAM y los servicios deben separar autenticación, rol y autorización de recurso. |
+| C02 | PostgreSQL es el almacenamiento relacional consistente para el diseño objetivo. | Cada servicio es dueño lógico de su esquema o base PostgreSQL; no comparte tablas. |
+| C03 | La reserva debe proteger el intervalo de un espacio. | Reservation Service es fuente de verdad para reservas y aplica TS01. |
+| C04 | Las integraciones externas se realizan mediante adaptadores. | Payment, mapas y canales de notificación quedan fuera del núcleo de dominio. |
+| C05 | REST/HTTPS resuelve necesidades síncronas. | El API Gateway enruta comandos y consultas; no contiene reglas de dominio. |
+| C06 | RabbitMQ resuelve propagación asíncrona de eventos. | Los consumidores deben ser idempotentes, usar ACK explícito y contar con DLQ. |
+| C07 | El AI Agent no accede a bases de datos ni ejecuta acciones de escritura sin una interfaz controlada. | Solo usa las herramientas de lectura/consulta autorizadas. |
+| C08 | La landing page requiere definición adicional. | No se incorpora como implementación ni como evidencia de producto. |
+
+## 4.3 Architectural Decision Records
+
+| ADR | Decisión | Estado | Motivo y tradeoff |
+|---|---|---|---|
+| ADR-001 | Usar microservicios alineados a bounded contexts. | Propuesto | Aísla reglas y despliegues; aumenta complejidad operativa frente a un monolito. |
+| ADR-002 | Exponer entrada síncrona mediante API Gateway y REST/HTTPS. | Propuesto | Centraliza políticas de borde; el gateway no reemplaza la autorización en cada servicio. |
+| ADR-003 | Usar RabbitMQ para eventos de dominio. | Propuesto | Desacopla consumidores; exige contratos, reintentos, idempotencia y operación de colas. |
+| ADR-004 | Usar PostgreSQL por servicio como fuente de verdad. | Propuesto | Favorece consistencia relacional y propiedad de datos; evita consultas cruzadas directas. |
+| ADR-005 | Modelar Reservation como core domain. | Propuesto | Protege la propuesta de valor; concentra las reglas de intervalo, estado y concurrencia. |
+| ADR-006 | Incorporar AI Agent con herramientas controladas. | Propuesto | Mejora la consulta en lenguaje natural; limita el agente a contratos explícitos y resultados autorizados. |
+
+## 4.4 Domain-Driven Design
+
+### Subdominios y bounded contexts
+
+| Contexto | Clasificación | Responsabilidad | Datos propios en PostgreSQL |
+|---|---|---|---|
+| IAM | Genérico | Registro, autenticación, identidad, roles y tokens. | Usuarios, credenciales protegidas, roles y sesiones. |
+| Parking | Soporte | Espacios, horarios, precios, estado y consulta de oferta. | Espacios, reglas de disponibilidad y proyecciones de búsqueda. |
+| Reservation | Núcleo | Invariantes de reserva, intervalos, cancelación y extensión. | Reservas, bloqueos, transiciones y outbox. |
+| Payment | Soporte | Intentos de pago, webhooks, reembolsos y comprobantes. | Pagos, claves de idempotencia, reembolsos y outbox. |
+| Notification | Soporte | Entrega de avisos y trazabilidad de canales. | Entregas, intentos y preferencias de comunicación. |
+| AI Agent | Soporte | Interpretar intención y orquestar herramientas permitidas. | Sesiones mínimas, trazas de herramienta y políticas; nunca datos de reserva o parking como fuente primaria. |
+
+### Bounded Context Canvases
+
+![Bounded Context Canvases](docs/tb1/assets/bounded-context-canvases.svg)
+
+| Contexto | Entrada | Regla central | Eventos publicados | Dependencias |
+|---|---|---|---|---|
+| IAM | Registro, login, renovación. | Emitir identidad y rol válidos. | `identity.user.registered` | Gateway, clientes. |
+| Parking | Alta/cambio de espacio, consulta. | El propietario solo administra su propio espacio. | `parking.space.updated` | IAM; mapas mediante adaptador. |
+| Reservation | Solicitud de reserva, cancelación, extensión. | Un espacio no puede tener reservas confirmadas incompatibles. | `reservation.confirmed`, `reservation.cancelled` | IAM, Parking, Payment. |
+| Payment | Solicitud de cobro, webhook, reembolso. | Repetir la misma clave no duplica efecto. | `payment.approved`, `payment.refunded`, `payment.failed` | Reservation; proveedor mediante adaptador. |
+| Notification | Eventos consumidos. | La entrega no cambia la validez de la operación original. | `notification.sent`, `notification.failed` | Proveedor de canal mediante adaptador. |
+| AI Agent | Mensaje natural autenticado. | Convierte intención en llamadas de herramienta permitidas. | `ai.tool.invoked` | Gateway y APIs de herramientas. |
+
+### Big Picture EventStorming
+
+![Big Picture EventStorming](docs/tb1/assets/big-picture-eventstorming.svg)
+
+| Actor o sistema | Comando | Evento de dominio | Política o efecto |
+|---|---|---|---|
+| Propietario | `RegisterParkingSpace` | `parking.space.registered` | Publicar la oferta cuando complete reglas mínimas. |
+| Propietario | `UpdateAvailability` | `parking.space.updated` | Actualizar proyección de búsqueda. |
+| Conductor | `RequestReservation` | `reservation.requested` | Validar intervalo y crear reserva pendiente o rechazar. |
+| Payment | `ApprovePayment` | `payment.approved` | Confirmar reserva asociada de forma idempotente. |
+| Reservation | `ConfirmReservation` | `reservation.confirmed` | Notificar y actualizar disponibilidad. |
+| Conductor | `CancelReservation` | `reservation.cancelled` | Liberar intervalo y, si corresponde, solicitar reembolso. |
+
+### Candidate Context Discovery
+
+![Candidate Context Discovery](docs/tb1/assets/candidate-context-discovery.svg)
+
+La exploración separa conceptos que cambian por razones distintas: **identidad**, **espacio/disponibilidad**, **reserva**, **pago**, **notificación** e **interpretación de intención**. La alternativa de un único contexto transaccional simplificaría la primera entrega, pero mezclaría reglas de reserva, pago y oferta; por ello se propone separar contextos y mantener contratos explícitos.
+
+### Context Map y análisis de alternativas
+
+![Context Map](docs/tb1/assets/context-map.svg)
+
+| Relación | Patrón propuesto | Alternativa considerada | Razón |
+|---|---|---|---|
+| IAM → servicios de dominio | Published Language para identidad y claims. | Compartir tablas de usuarios. | Se evita acoplar persistencia. |
+| Parking → Reservation | Customer/Supplier mediante API y eventos de disponibilidad. | Reservation escribiendo datos de espacios. | Parking conserva propiedad de oferta. |
+| Reservation → Payment | Customer/Supplier con comandos REST y eventos de resultado. | Transacción distribuida. | Se evita coordinar una transacción global frágil. |
+| Eventos → Notification | Published Language en RabbitMQ. | Llamadas síncronas en cascada. | El aviso no bloquea la transacción principal. |
+| AI Agent → Parking/Reservation | Anti-Corruption Layer mediante herramientas. | Acceso SQL del agente. | Mantiene validación, autorización y límites de datos. |
+
+## 4.5 Flujos de mensajes de dominio
+
+![Domain Message Flows](docs/tb1/assets/domain-message-flows.svg)
+
+### Contrato de mensajería RabbitMQ
+
+| Elemento | Diseño propuesto |
+|---|---|
+| Productores | IAM, Parking, Reservation, Payment y Notification publican tras confirmar su operación mediante outbox o mecanismo equivalente. |
+| Exchanges | Topic exchanges: `parklink.domain.v1` para eventos de negocio y `parklink.deadletter.v1` para mensajes agotados. |
+| Routing keys | `identity.user.registered`, `parking.space.updated`, `reservation.confirmed`, `reservation.cancelled`, `payment.approved`, `payment.refunded`, `payment.failed`, `notification.failed`. |
+| Colas | Colas por consumidor, por ejemplo `notification.reservation-events.v1`, `parking.reservation-events.v1` y `reservation.payment-events.v1`. |
+| Confirmación | Consumidores aplican procesamiento idempotente y emiten ACK solo después de persistir el efecto local. |
+| Reintentos | Fallos transitorios se reintentan con contador y demora configurada; el límite y la política operativa quedan pendientes de definir. |
+| DLQ | Mensajes agotados se enrutan a una cola de letras muertas con motivo, conteo y `correlationId`; requieren revisión operativa. |
+| Idempotencia | Productores incluyen `eventId`; consumidores guardan eventos procesados o clave equivalente antes de repetir efectos. |
+| Correlación | Los comandos HTTP generan o propagan `correlationId`; este se incluye en eventos, logs y notificaciones. |
+| Seguridad | Credenciales del broker se gestionan fuera del código, con permisos por productor/consumidor y TLS cuando corresponda. |
+
+### Flujo de reserva y pago
+
+1. El cliente llama al Gateway por REST/HTTPS con un `correlationId`.
+2. Gateway valida el token y remite el comando a Reservation Service; este vuelve a validar autorización y la regla de intervalo.
+3. Reservation Service persiste la reserva pendiente y su outbox en PostgreSQL.
+4. Payment Service procesa la solicitud con una clave idempotente y publica `payment.approved` o `payment.failed` desde su outbox.
+5. Reservation Service consume el evento, confirma o rechaza la transición conforme a su regla y publica el evento correspondiente.
+6. Parking Service actualiza una proyección; Notification Service intenta entregar un aviso. Sus fallos no modifican la decisión ya confirmada.
+
+## 4.6 C4 Model
+
+### Context
+
+![C4 Context](docs/tb1/assets/c4-context.svg)
+
+Conductores y propietarios consumen ParkLink mediante clientes móviles o web. La plataforma integra mapas, un proveedor de pagos y canales de notificación a través de adaptadores. Estos sistemas externos son dependencias propuestas, no integraciones acreditadas.
+
+### Container
+
+![C4 Container](docs/tb1/assets/c4-container.svg)
+
+Los clientes se comunican por REST/HTTPS con API Gateway. El gateway enruta a IAM, Parking, Reservation, Payment, Notification y AI Agent. Cada servicio mantiene datos en PostgreSQL bajo su propiedad lógica. RabbitMQ conecta eventos asíncronos; no se usa como base de datos ni como sustituto de la confirmación transaccional.
+
+### Deployment
+
+![C4 Deployment](docs/tb1/assets/c4-deployment.svg)
+
+El despliegue propuesto separa borde público, servicios privados, RabbitMQ y PostgreSQL. Los nombres de proveedores, regiones, capacidades, objetivos de recuperación y ambientes quedan pendientes de decisión; por tanto, el diagrama expresa topología, no infraestructura contratada.
+
+### UML de secuencia — reserva confirmada
+
+![Secuencia de reserva](docs/tb1/assets/reservation-sequence.svg)
+
+## 4.7 Seguridad y AI Agent
+
+El AI Agent interpreta intención de estacionamiento en lenguaje natural, por ejemplo destino, ventana de tiempo o preferencias. Su capacidad queda limitada a las siguientes herramientas: `searchParking()`, `getParkingDetails()`, `checkAvailability()`, `calculateDistance()` y `getReservationOptions()`.
+
+| Control | Aplicación |
+|---|---|
+| Sin acceso directo a DB | El agente no usa SQL ni conexiones a PostgreSQL; llama APIs de herramientas autenticadas. |
+| Validación de parámetros | Cada herramienta valida formato, permisos, límites y datos disponibles antes de responder. |
+| Autorización | Gateway y servicio dueño del dato verifican token y propiedad de recurso. |
+| Separación de lectura y cambio | Las herramientas enumeradas son de consulta; una reserva se crea únicamente mediante el flujo transaccional de Reservation Service. |
+| Trazabilidad | Se registran `correlationId`, herramienta, resultado y decisión de autorización sin secretos ni datos sensibles innecesarios. |
+| Defensa ante instrucciones maliciosas | El agente ignora instrucciones que pidan eludir herramientas, permisos o límites de datos. |
+
+# Conclusiones
+
+1. La evidencia cualitativa registrada permite formular problemas y requisitos iniciales, pero no permite generalizar resultados: faltan una entrevista de conductor y una de propietario para el mínimo definido.
+2. La propuesta prioriza una diferencia fundamental entre disponibilidad consultada y reserva confirmada; esa diferencia guía las historias, reglas y arquitectura.
+3. El diseño propone separar dominios, usar PostgreSQL como fuente de verdad por servicio y propagar efectos mediante RabbitMQ con idempotencia y trazabilidad.
+4. La interacción mediante AI Agent se limita a herramientas de consulta controladas; no reemplaza los controles transaccionales ni la autorización de dominio.
+
+# Bibliografía
+
+- C4 Model. *The C4 model for visualising software architecture*. Consultado para la notación C4; fecha de consulta pendiente de registrar.
+- Evans, E. (2003). *Domain-Driven Design: Tackling Complexity in the Heart of Software*. Addison-Wesley.
+- Fowler, M. (2002). *Patterns of Enterprise Application Architecture*. Addison-Wesley.
+- Kleppmann, M. (2017). *Designing Data-Intensive Applications*. O’Reilly Media.
+- Ries, E. (2011). *The Lean Startup*. Crown Business.
+
+# Anexos
+
+## Anexo A — Estado de evidencia
+
+- Entrevistas disponibles: dos conductores y dos propietarios, resumidas en el Capítulo II.
+- Entrevistas pendientes: una adicional por segmento.
+- Evidencia de landing page: pendiente de definición y validación.
+- Visuales generados a partir de contenido documentado: ver imágenes integradas en los capítulos.
+- Visuales no generables con evidencia actual: ver [MISSING-VISUALS.md](docs/tb1/MISSING-VISUALS.md).
+
+## Anexo B — Verificación del informe
+
+La verificación de presencia de secciones, enlaces locales, activos y brechas se registra en [TB1-CHECKLIST.md](docs/tb1/TB1-CHECKLIST.md).
+
