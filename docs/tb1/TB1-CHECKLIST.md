@@ -1,0 +1,88 @@
+# TB1 Checklist
+## General
+- [x] Carátula actualizada
+- [x] Registro de versiones
+- [x] Project Report Collaboration Insights
+- [x] Tabla de contenidos
+- [x] Student Outcome
+- [x] Solo Pietro como integrante confirmado
+- [x] Espacios preparados para futuros integrantes
+## Capítulo I
+- [x] Startup Profile
+- [x] Perfil de Pietro
+- [x] Solution Profile
+- [x] Antecedentes y problemática
+- [x] 5W2H
+- [x] Lean UX Problem Statements
+- [x] Lean UX Assumptions
+- [x] Lean UX Hypothesis Statements
+- [x] Lean UX Canvas
+- [x] Segmentos objetivo
+## Capítulo II
+- [x] Competidores
+- [x] Competitive Analysis
+- [x] Estrategias competitivas
+- [x] Diseño de entrevistas
+- [x] Entrevistas existentes reutilizadas
+- [x] Análisis estadístico
+- [ ] Entrevista adicional de conductor
+- [ ] Entrevista adicional de propietario
+- [x] User Personas
+- [x] User Task Matrix
+- [x] Empathy Maps
+- [x] As-Is Scenario Maps
+- [x] Ubiquitous Language
+## Capítulo III
+- [x] To-Be Scenario Maps
+- [x] Epics
+- [x] User Stories
+- [x] Technical Stories
+- [x] AI Technical Stories
+- [x] Messaging Technical Stories
+- [x] Impact Mapping
+- [x] Product Backlog actualizado
+## Capítulo IV
+- [x] Design Purpose
+- [x] Primary Functionality
+- [x] Quality Attribute Scenarios
+- [x] Constraints
+- [x] Architectural Drivers
+- [x] Architectural Decisions
+- [x] ADRs
+- [x] EventStorming
+- [x] Candidate Context Discovery
+- [x] Domain Message Flows
+- [x] Bounded Contexts
+- [x] Bounded Context Canvases
+- [x] Context Mapping
+- [x] Microservices definidos
+- [x] API Gateway
+- [x] RabbitMQ
+- [x] AI Agent
+- [x] C4 Context
+- [x] C4 Container
+- [x] C4 Deployment
+## Visuales
+- [x] Lean UX Canvas
+- [x] User Personas
+- [x] Empathy Maps
+- [x] As-Is Maps
+- [x] To-Be Maps
+- [x] Impact Map
+- [x] EventStorming
+- [x] Candidate Context Discovery
+- [x] Domain Message Flows
+- [x] Bounded Context Canvases
+- [x] Context Map
+- [x] C4 diagrams
+## Cierre
+- [x] Conclusiones
+- [x] Bibliografía
+- [x] Anexos
+- [x] Links verificados
+- [x] Imágenes verificadas
+- [x] Markdown validado
+- [x] No hay nombres de integrantes no confirmados
+- [x] No se menciona que el material proviene de otro proyecto
+- [x] `develop` actualizado
+- [x] `main` intacta
