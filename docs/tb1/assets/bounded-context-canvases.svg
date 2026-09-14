@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="514" viewBox="0 0 1440 514" role="img" aria-labelledby="t d">
+<title id="t">Bounded Context Canvases — ParkLink</title>
+<desc id="d">Responsabilidades y contratos de los contextos propuestos</desc>
+<rect width="100%" height="100%" fill="#f8fafc"/>
+<rect x="0" y="0" width="1440" height="126" fill="#123047"/>
+<text x="46" y="54" fill="#ffffff" font-family="Arial, sans-serif" font-size="31" font-weight="700">Bounded Context Canvases — ParkLink</text>
+<text x="46" y="91" fill="#d7e7f1" font-family="Arial, sans-serif" font-size="17">Responsabilidades y contratos de los contextos propuestos</text>
+<rect x="46.0" y="158" width="255.2" height="254" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+<rect x="46.0" y="158" width="255.2" height="50" rx="12" fill="#0f766e"/>
+<text x="64.0" y="190" fill="#ffffff" font-family="Arial, sans-serif" font-size="20" font-weight="700">IAM</text>
+<rect x="60.0" y="232" width="227.2" height="52" rx="8" fill="#f1f5f9"/>
+<text x="72.0" y="254" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">Responsabilidad</text>
+<text x="72.0" y="274" fill="#334155" font-family="Arial, sans-serif" font-size="14">Identidad, rol y token.</text>
+<rect x="60.0" y="296" width="227.2" height="52" rx="8" fill="#f1f5f9"/>
+<text x="72.0" y="318" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">Publica</text>
+<text x="72.0" y="338" fill="#334155" font-family="Arial, sans-serif" font-size="14">identity.user.registered</text>
+<rect x="319.2" y="158" width="255.2" height="254" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+<rect x="319.2" y="158" width="255.2" height="50" rx="12" fill="#2563eb"/>
+<text x="337.2" y="190" fill="#ffffff" font-family="Arial, sans-serif" font-size="20" font-weight="700">Parking</text>
+<rect x="333.2" y="232" width="227.2" height="52" rx="8" fill="#f1f5f9"/>
+<text x="345.2" y="254" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">Responsabilidad</text>
+<text x="345.2" y="274" fill="#334155" font-family="Arial, sans-serif" font-size="14">Espacio, horario, precio y consulta.</text>
+<rect x="333.2" y="296" width="227.2" height="52" rx="8" fill="#f1f5f9"/>
+<text x="345.2" y="318" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">Publica</text>
+<text x="345.2" y="338" fill="#334155" font-family="Arial, sans-serif" font-size="14">parking.space.updated</text>
+<rect x="592.4" y="158" width="255.2" height="254" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+<rect x="592.4" y="158" width="255.2" height="50" rx="12" fill="#7c3aed"/>
+<text x="610.4" y="190" fill="#ffffff" font-family="Arial, sans-serif" font-size="20" font-weight="700">Reservation</text>
+<rect x="606.4" y="232" width="227.2" height="52" rx="8" fill="#f1f5f9"/>
+<text x="618.4" y="254" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">Responsabilidad</text>
+<text x="618.4" y="274" fill="#334155" font-family="Arial, sans-serif" font-size="14">Intervalo, reserva y transición.</text>
+<rect x="606.4" y="296" width="227.2" height="52" rx="8" fill="#f1f5f9"/>
+<text x="618.4" y="318" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">Publica</text>
+<text x="618.4" y="338" fill="#334155" font-family="Arial, sans-serif" font-size="14">reservation.confirmed / cancelled</text>
+<rect x="865.5999999999999" y="158" width="255.2" height="254" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+<rect x="865.5999999999999" y="158" width="255.2" height="50" rx="12" fill="#b45309"/>
+<text x="883.5999999999999" y="190" fill="#ffffff" font-family="Arial, sans-serif" font-size="20" font-weight="700">Payment</text>
+<rect x="879.5999999999999" y="232" width="227.2" height="52" rx="8" fill="#f1f5f9"/>
+<text x="891.5999999999999" y="254" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">Responsabilidad</text>
+<text x="891.5999999999999" y="274" fill="#334155" font-family="Arial, sans-serif" font-size="14">Cobro, reembolso e idempotencia.</text>
+<rect x="879.5999999999999" y="296" width="227.2" height="52" rx="8" fill="#f1f5f9"/>
+<text x="891.5999999999999" y="318" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">Publica</text>
+<text x="891.5999999999999" y="338" fill="#334155" font-family="Arial, sans-serif" font-size="14">payment.approved / refunded</text>
+<rect x="1138.8" y="158" width="255.2" height="254" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+<rect x="1138.8" y="158" width="255.2" height="50" rx="12" fill="#be123c"/>
+<text x="1156.8" y="190" fill="#ffffff" font-family="Arial, sans-serif" font-size="20" font-weight="700">Notification + AI</text>
+<rect x="1152.8" y="232" width="227.2" height="52" rx="8" fill="#f1f5f9"/>
+<text x="1164.8" y="254" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">Responsabilidad</text>
+<text x="1164.8" y="274" fill="#334155" font-family="Arial, sans-serif" font-size="14">Aviso y consulta con herramientas.</text>
+<rect x="1152.8" y="296" width="227.2" height="52" rx="8" fill="#f1f5f9"/>
+<text x="1164.8" y="318" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">Límite</text>
+<text x="1164.8" y="338" fill="#334155" font-family="Arial, sans-serif" font-size="14">No modifica la fuente de verdad.</text>
+<text x="46" y="488" fill="#475569" font-family="Arial, sans-serif" font-size="14">Diseño objetivo TB1 — evidencia y decisiones por validar</text>
+</svg>

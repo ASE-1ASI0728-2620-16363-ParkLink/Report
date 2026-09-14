@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="738" viewBox="0 0 1440 738" role="img" aria-labelledby="t d">
+<title id="t">As-Is Scenario Maps — situación actual</title>
+<desc id="d">Escenarios descriptivos a partir de entrevistas disponibles</desc>
+<rect width="100%" height="100%" fill="#f8fafc"/>
+<rect x="0" y="0" width="1440" height="126" fill="#123047"/>
+<text x="46" y="54" fill="#ffffff" font-family="Arial, sans-serif" font-size="31" font-weight="700">As-Is Scenario Maps — situación actual</text>
+<text x="46" y="91" fill="#d7e7f1" font-family="Arial, sans-serif" font-size="17">Escenarios descriptivos a partir de entrevistas disponibles</text>
+<rect x="46.0" y="158" width="665.0" height="478" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+<rect x="46.0" y="158" width="665.0" height="50" rx="12" fill="#0f766e"/>
+<text x="64.0" y="190" fill="#ffffff" font-family="Arial, sans-serif" font-size="20" font-weight="700">Conductor</text>
+<rect x="60.0" y="232" width="637.0" height="52" rx="8" fill="#f1f5f9"/>
+<text x="72.0" y="254" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">Inicio</text>
+<text x="72.0" y="274" fill="#334155" font-family="Arial, sans-serif" font-size="14">Se aproxima a un destino.</text>
+<rect x="60.0" y="296" width="637.0" height="52" rx="8" fill="#f1f5f9"/>
+<text x="72.0" y="318" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">Acción actual</text>
+<text x="72.0" y="338" fill="#334155" font-family="Arial, sans-serif" font-size="14">Busca espacios manualmente.</text>
+<rect x="60.0" y="360" width="637.0" height="52" rx="8" fill="#f1f5f9"/>
+<text x="72.0" y="382" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">Dificultad</text>
+<text x="72.0" y="402" fill="#334155" font-family="Arial, sans-serif" font-size="14">No conoce disponibilidad con certeza.</text>
+<rect x="60.0" y="424" width="637.0" height="52" rx="8" fill="#f1f5f9"/>
+<text x="72.0" y="446" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">Resultado</text>
+<text x="72.0" y="466" fill="#334155" font-family="Arial, sans-serif" font-size="14">Puede perder tiempo o modificar el plan.</text>
+<rect x="729.0" y="158" width="665.0" height="478" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+<rect x="729.0" y="158" width="665.0" height="50" rx="12" fill="#2563eb"/>
+<text x="747.0" y="190" fill="#ffffff" font-family="Arial, sans-serif" font-size="20" font-weight="700">Propietario</text>
+<rect x="743.0" y="232" width="637.0" height="52" rx="8" fill="#f1f5f9"/>
+<text x="755.0" y="254" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">Inicio</text>
+<text x="755.0" y="274" fill="#334155" font-family="Arial, sans-serif" font-size="14">Tiene espacio potencialmente libre.</text>
+<rect x="743.0" y="296" width="637.0" height="52" rx="8" fill="#f1f5f9"/>
+<text x="755.0" y="318" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">Acción actual</text>
+<text x="755.0" y="338" fill="#334155" font-family="Arial, sans-serif" font-size="14">Coordina oferta por canales manuales.</text>
+<rect x="743.0" y="360" width="637.0" height="52" rx="8" fill="#f1f5f9"/>
+<text x="755.0" y="382" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">Dificultad</text>
+<text x="755.0" y="402" fill="#334155" font-family="Arial, sans-serif" font-size="14">Control y visibilidad limitados.</text>
+<rect x="743.0" y="424" width="637.0" height="52" rx="8" fill="#f1f5f9"/>
+<text x="755.0" y="446" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">Resultado</text>
+<text x="755.0" y="466" fill="#334155" font-family="Arial, sans-serif" font-size="14">La oferta puede quedar sin aprovechar.</text>
+<text x="46" y="712" fill="#475569" font-family="Arial, sans-serif" font-size="14">Diseño objetivo TB1 — evidencia y decisiones por validar</text>
+</svg>

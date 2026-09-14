@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="514" viewBox="0 0 1440 514" role="img" aria-labelledby="t d">
+<title id="t">C4 Deployment — ParkLink</title>
+<desc id="d">Topología conceptual; proveedores y capacidades pendientes</desc>
+<rect width="100%" height="100%" fill="#f8fafc"/>
+<rect x="0" y="0" width="1440" height="126" fill="#123047"/>
+<text x="46" y="54" fill="#ffffff" font-family="Arial, sans-serif" font-size="31" font-weight="700">C4 Deployment — ParkLink</text>
+<text x="46" y="91" fill="#d7e7f1" font-family="Arial, sans-serif" font-size="17">Topología conceptual; proveedores y capacidades pendientes</text>
+<rect x="46.0" y="158" width="323.5" height="254" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+<rect x="46.0" y="158" width="323.5" height="50" rx="12" fill="#0f766e"/>
+<text x="64.0" y="190" fill="#ffffff" font-family="Arial, sans-serif" font-size="20" font-weight="700">Borde público</text>
+<rect x="60.0" y="232" width="295.5" height="52" rx="8" fill="#f1f5f9"/>
+<text x="72.0" y="254" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">Clientes</text>
+<text x="72.0" y="274" fill="#334155" font-family="Arial, sans-serif" font-size="14">Móvil y web.</text>
+<rect x="60.0" y="296" width="295.5" height="52" rx="8" fill="#f1f5f9"/>
+<text x="72.0" y="318" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">Gateway</text>
+<text x="72.0" y="338" fill="#334155" font-family="Arial, sans-serif" font-size="14">HTTPS y políticas de borde.</text>
+<rect x="387.5" y="158" width="323.5" height="254" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+<rect x="387.5" y="158" width="323.5" height="50" rx="12" fill="#2563eb"/>
+<text x="405.5" y="190" fill="#ffffff" font-family="Arial, sans-serif" font-size="20" font-weight="700">Zona de servicios</text>
+<rect x="401.5" y="232" width="295.5" height="64" rx="8" fill="#f1f5f9"/>
+<text x="413.5" y="254" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">Servicios</text>
+<text x="413.5" y="274" fill="#334155" font-family="Arial, sans-serif" font-size="14">IAM, Parking, Reservation, Payment,</text>
+<text x="413.5" y="292" fill="#334155" font-family="Arial, sans-serif" font-size="14">Notification, AI Agent.</text>
+<rect x="401.5" y="308" width="295.5" height="52" rx="8" fill="#f1f5f9"/>
+<text x="413.5" y="330" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">Comunicación</text>
+<text x="413.5" y="350" fill="#334155" font-family="Arial, sans-serif" font-size="14">REST interno y eventos RabbitMQ.</text>
+<rect x="729.0" y="158" width="323.5" height="254" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+<rect x="729.0" y="158" width="323.5" height="50" rx="12" fill="#7c3aed"/>
+<text x="747.0" y="190" fill="#ffffff" font-family="Arial, sans-serif" font-size="20" font-weight="700">Zona de datos</text>
+<rect x="743.0" y="232" width="295.5" height="64" rx="8" fill="#f1f5f9"/>
+<text x="755.0" y="254" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">PostgreSQL</text>
+<text x="755.0" y="274" fill="#334155" font-family="Arial, sans-serif" font-size="14">Datos por servicio y backups por</text>
+<text x="755.0" y="292" fill="#334155" font-family="Arial, sans-serif" font-size="14">definir.</text>
+<rect x="743.0" y="308" width="295.5" height="52" rx="8" fill="#f1f5f9"/>
+<text x="755.0" y="330" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">RabbitMQ</text>
+<text x="755.0" y="350" fill="#334155" font-family="Arial, sans-serif" font-size="14">Broker, colas y DLQ.</text>
+<rect x="1070.5" y="158" width="323.5" height="254" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+<rect x="1070.5" y="158" width="323.5" height="50" rx="12" fill="#b45309"/>
+<text x="1088.5" y="190" fill="#ffffff" font-family="Arial, sans-serif" font-size="20" font-weight="700">Dependencias</text>
+<rect x="1084.5" y="232" width="295.5" height="52" rx="8" fill="#f1f5f9"/>
+<text x="1096.5" y="254" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">Adaptadores</text>
+<text x="1096.5" y="274" fill="#334155" font-family="Arial, sans-serif" font-size="14">Mapas, pago y canales.</text>
+<rect x="1084.5" y="296" width="295.5" height="52" rx="8" fill="#f1f5f9"/>
+<text x="1096.5" y="318" fill="#0f172a" font-family="Arial, sans-serif" font-size="15" font-weight="700">Pendiente</text>
+<text x="1096.5" y="338" fill="#334155" font-family="Arial, sans-serif" font-size="14">Región, red, secretos y recuperación.</text>
+<text x="46" y="488" fill="#475569" font-family="Arial, sans-serif" font-size="14">Diseño objetivo TB1 — evidencia y decisiones por validar</text>
+</svg>
