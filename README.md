@@ -279,3 +279,103 @@ Los perfiles son arquetipos de diseño construidos a partir de los patrones desc
 | Idempotencia | Repetir una solicitud no duplica su efecto de negocio. | Reintentar sin control. |
 | Evento de dominio | Hecho de negocio publicado después de un cambio válido. | Comando o petición HTTP. |
 
+
+# Capítulo III — Especificación
+
+## 3.1 To-Be Scenario Mapping
+
+![Escenarios objetivo](docs/tb1/assets/to-be-scenarios.svg)
+
+| Escenario | Pasos propuestos | Resultado esperado | Condición de control |
+|---|---|---|---|
+| Conductor | Busca por destino, compara opciones, revisa detalle, solicita reserva, completa pago y recibe confirmación. | Cuenta con una reserva confirmada o recibe una respuesta clara de no disponibilidad. | La confirmación depende de validación de reserva y pago. |
+| Propietario | Registra espacio, define horario/precio, habilita oferta, revisa reserva y consulta movimientos. | Gestiona la oferta sin eliminarla cuando cambia temporalmente su disponibilidad. | Los cambios deben respetar las reservas ya confirmadas. |
+
+## 3.2 Épicas
+
+| ID | Épica | Propósito |
+|---|---|---|
+| EP01 | Búsqueda y descubrimiento de estacionamientos | Ayudar al conductor a localizar y evaluar opciones. |
+| EP02 | Reserva y gestión de reservas | Mantener el ciclo de vida de una reserva sin conflictos. |
+| EP03 | Publicación y gestión de espacios | Permitir al propietario administrar la oferta. |
+| EP04 | Pagos y facturación | Gestionar cobros, reembolsos y comprobantes. |
+| EP05 | Gestión de cuenta y autenticación | Registrar, autenticar y autorizar usuarios por rol. |
+| EP06 | Notificaciones y comunicación | Informar eventos relevantes de forma trazable. |
+
+## 3.3 User Stories
+
+Las prioridades se expresan como **Must**, **Should** y **Could** para planificación de TB1; no acreditan implementación.
+
+| ID | Prioridad | Historia | Criterio de aceptación verificable |
+|---|---|---|---|
+| US01 | Must | Como conductor, deseo buscar estacionamientos cerca de mi destino para planificar la llegada. | Dado un destino, cuando busco, entonces se muestran opciones disponibles con la información que el sistema tenga para precio, horario y distancia. |
+| US02 | Must | Como conductor, deseo consultar disponibilidad para evitar elegir un espacio ocupado. | Dada una opción, cuando consulto un intervalo, entonces el sistema responde disponibilidad consultable y aclara que puede cambiar hasta confirmar. |
+| US03 | Should | Como conductor, deseo filtrar opciones por precio y horario para comparar alternativas. | Dada una búsqueda, cuando aplico filtros soportados, entonces solo se muestran opciones que cumplen los criterios. |
+| US04 | Should | Como conductor, deseo ver el detalle de un espacio para decidir informado. | Dada una opción, cuando abro el detalle, entonces se muestran los datos publicados disponibles, incluidas condiciones y horario. |
+| US05 | Must | Como conductor, deseo reservar un espacio para asegurar un intervalo de uso. | Dado un espacio disponible, cuando confirmo un intervalo válido, entonces se crea una reserva o se informa que no puede confirmarse. |
+| US06 | Should | Como conductor, deseo cancelar una reserva para liberar el espacio si ya no lo necesito. | Dada una reserva cancelable según política pendiente de definir, cuando la cancelo, entonces cambia su estado y se ejecuta el flujo aplicable. |
+| US07 | Could | Como conductor, deseo consultar mi historial de reservas para revisar operaciones anteriores. | Dado un usuario autenticado, cuando abre su historial, entonces ve únicamente sus reservas autorizadas. |
+| US08 | Should | Como conductor, deseo extender una reserva activa para solicitar más tiempo. | Dada una reserva activa, cuando solicito extensión, entonces el sistema valida el intervalo adicional antes de confirmar cualquier cambio. |
+| US09 | Must | Como propietario, deseo registrar un espacio para ofrecerlo. | Dado un propietario autenticado, cuando completa los datos mínimos definidos, entonces el espacio queda registrado bajo su control. |
+| US10 | Must | Como propietario, deseo configurar horario y precio para controlar la oferta. | Dado un espacio propio, cuando cambio horario o precio, entonces se valida la regla y el cambio queda trazado para futuras disponibilidades. |
+| US11 | Must | Como propietario, deseo habilitar o deshabilitar un espacio temporalmente. | Dado un espacio propio, cuando cambio su estado, entonces la oferta futura se actualiza sin eliminar el registro ni invalidar reservas confirmadas. |
+| US12 | Should | Como propietario, deseo ver reservas activas de mi espacio para administrarlo. | Dado un propietario autenticado, cuando consulta su espacio, entonces ve solo reservas asociadas a sus espacios. |
+| US13 | Could | Como propietario, deseo consultar el historial de ingresos para revisar resultados. | Dado un rango y un propietario autorizado, cuando consulta movimientos, entonces se muestran operaciones registradas bajo reglas de visibilidad definidas. |
+| US14 | Must | Como conductor, deseo pagar una reserva para completar la transacción. | Dada una reserva apta para pago, cuando el proveedor confirma el cobro, entonces el sistema registra un único resultado de pago. |
+| US15 | Should | Como conductor, deseo solicitar un reembolso aplicable a una cancelación. | Dada una cancelación elegible por política pendiente, cuando se solicita el reembolso, entonces se registra su estado sin duplicar la operación. |
+| US16 | Should | Como conductor, deseo ver un comprobante de pago para tener respaldo. | Dado un pago registrado y autorizado, cuando solicito comprobante, entonces se presenta el detalle disponible de esa operación. |
+| US17 | Must | Como conductor, deseo registrarme para usar funcionalidades protegidas. | Dado un formulario válido, cuando completo el registro, entonces se crea una cuenta con rol de conductor. |
+| US18 | Must | Como propietario, deseo registrarme para publicar espacios. | Dado un formulario válido y requisitos de verificación por definir, cuando completo el registro, entonces se crea una cuenta con rol de propietario. |
+| US19 | Must | Como usuario registrado, deseo iniciar sesión para acceder según mi rol. | Dadas credenciales válidas, cuando inicio sesión, entonces se emite una sesión autorizada; con credenciales inválidas se rechaza sin revelar información sensible. |
+| US20 | Should | Como conductor, deseo recibir una notificación de reserva confirmada. | Dada una reserva confirmada, cuando se publica el evento correspondiente, entonces se intenta generar una notificación trazable sin alterar la reserva. |
+
+### Evidencia de landing page
+
+El alcance solicita considerar una landing page. No existe evidencia suficiente en TB1 para declarar su contenido, comportamiento o implementación. Se registra como **brecha de evidencia**: definir objetivo, audiencia, mensajes, prototipo, métricas y criterio de aceptación antes de incorporarla al backlog de entrega.
+
+## 3.4 Technical Stories
+
+| ID | Prioridad | Necesidad técnica | Criterio de aceptación |
+|---|---|---|---|
+| TS01 | Must | Control transaccional de reservas concurrentes. | Dos solicitudes incompatibles para el mismo espacio e intervalo no dejan más de una reserva confirmada. |
+| TS02 | Must | Proyección de disponibilidad para búsqueda rápida. | Un cambio válido de disponibilidad actualiza la proyección; PostgreSQL conserva la fuente de verdad. |
+| TS03 | Must | Autenticación y autorización por roles. | Un token y rol válido permiten solo acciones autorizadas; el acceso no autorizado se rechaza. |
+| TS04 | Must | Auditoría de reservas, pagos, reembolsos y disponibilidad. | Toda operación crítica confirmada produce un registro de auditoría con actor, acción, entidad y fecha. |
+| TS05 | Should | Almacenamiento de fotos mediante object storage compatible con S3. | Las imágenes se gestionan mediante URLs controladas y permisos definidos, sin exponer credenciales. |
+| TS06 | Must | Idempotencia de pagos y webhooks. | La repetición del mismo identificador o clave no duplica el cobro ni la transición de estado. |
+| TS-AI01 | Should | Interpretación controlada de intención de estacionamiento. | El AI Agent transforma lenguaje natural en parámetros validados o solicita aclaración; no consulta bases de datos directamente. |
+| TS-AI02 | Should | Herramientas permitidas para el AI Agent. | El agente solo puede invocar `searchParking()`, `getParkingDetails()`, `checkAvailability()`, `calculateDistance()` y `getReservationOptions()` mediante interfaces autenticadas. |
+| TS-AI03 | Should | Trazabilidad y seguridad de interacción AI. | Cada invocación guarda correlación, herramienta, resultado resumido y resultado de autorización, sin registrar secretos. |
+| TS-MSG01 | Must | Publicación confiable de eventos de dominio. | Un cambio confirmado usa outbox o mecanismo equivalente para publicar eventos sin perder el vínculo con la transacción. |
+| TS-MSG02 | Must | Consumo idempotente y reintentos. | Un consumidor reconoce mensajes repetidos, reintenta fallos transitorios y envía fallos agotados a DLQ. |
+| TS-MSG03 | Must | Correlación de operaciones distribuidas. | Comandos, eventos y notificaciones transportan un `correlationId` para seguir una operación. |
+| TS-OBS01 | Should | Observabilidad distribuida. | Las solicitudes y mensajes producen logs estructurados y trazas con identificador de correlación. |
+| TS-SEC01 | Must | Protección de servicios y datos. | Todo tráfico externo usa HTTPS; los servicios verifican identidad, rol y autorización de recurso antes de ejecutar comandos. |
+| TS-GW01 | Must | API Gateway para tráfico síncrono. | El gateway enruta APIs REST/HTTPS, valida tokens y aplica límites o políticas sin contener reglas de dominio. |
+
+## 3.5 Impact Mapping
+
+![Impact Map de ParkLink](docs/tb1/assets/impact-map.svg)
+
+| Objetivo de producto sin métrica aún validada | Actor | Cambio de comportamiento buscado | Entregables vinculados |
+|---|---|---|---|
+| Reducir incertidumbre antes de buscar estacionamiento | Conductor | Evalúa una opción antes de desplazarse. | US01–US05, US20; TS01–TS03. |
+| Dar control a la oferta de estacionamientos | Propietario | Configura y administra su espacio con reglas explícitas. | US09–US13, US18; TS04–TS06. |
+| Mantener una operación confiable | Ambos | Recibe resultados trazables de reservas y pagos. | US05–US08, US14–US16; TS01, TS04, TS06, TS-MSG01–03, TS-SEC01. |
+
+## 3.6 Product Backlog actualizado
+
+| Orden | Ítem | Prioridad | Dependencia principal |
+|---:|---|---|---|
+| 1 | US17, US18, US19 | Must | TS03, TS-SEC01, TS-GW01 |
+| 2 | US09, US10, US11 | Must | TS04 |
+| 3 | US01, US02 | Must | TS02, TS-GW01 |
+| 4 | US05 | Must | TS01, TS04, TS-MSG01, TS-MSG03 |
+| 5 | US14 | Must | TS06, TS-MSG01–03 |
+| 6 | US03, US04 | Should | US01–US02 |
+| 7 | US12, US20 | Should | TS-MSG02–03 |
+| 8 | US06, US08, US15, US16 | Should | TS01, TS06 |
+| 9 | US07, US13 | Could | Autorización y auditoría |
+| 10 | TS-AI01, TS-AI02, TS-AI03, TS-OBS01 | Should | TS-GW01, TS-SEC01, TS-MSG03 |
+| 11 | Landing page | Pendiente | Brecha de evidencia documentada; no planificar sin definición validada. |
+
