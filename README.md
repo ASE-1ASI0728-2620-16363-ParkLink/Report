@@ -596,4 +596,3 @@ El AI Agent interpreta intención de estacionamiento en lenguaje natural, por ej
 ## Anexo B — Verificación del informe
 
 La verificación de presencia de secciones, enlaces locales, activos y brechas se registra en [TB1-CHECKLIST.md](docs/tb1/TB1-CHECKLIST.md).
-
